@@ -37,7 +37,7 @@ public class Persona{
 	public void setSexo(char s){
 		sexo = s;
 	}
-	public void setPeso(double p){
+	public void setPeso(int p){
 		peso = p;
 	}
 	public void setAltura(double a){
@@ -62,7 +62,7 @@ public class Persona{
 		double imc = peso / altura;
 		if(imc < IMC_INFERIOR)
 			return -1;
-		else if((IMC_INFERIOR <= imc && imc <= IMC_SUPERIOR)
+		else if(IMC_INFERIOR <= imc && imc <= IMC_SUPERIOR)
 			return 0;
 		return 1;
 	}
@@ -71,9 +71,8 @@ public class Persona{
 		return edad > 17;
 	}
 	
-	public boolean comprobarSexo(char sexo){
-		
-	}
+	//public boolean comprobarSexo(char sexo){
+	//}
 	
 	public String toString(){
 		String n = "Nombre: " + nombre;
