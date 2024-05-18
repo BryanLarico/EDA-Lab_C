@@ -58,6 +58,7 @@ public class Persona{
 	public double getAltura(){
 		return altura;
 	}
+	
 	public int calcularIMC(){
 		double imc = peso / altura;
 		if(imc < IMC_INFERIOR)
@@ -71,8 +72,9 @@ public class Persona{
 		return edad > 17;
 	}
 	
-	//public boolean comprobarSexo(char sexo){
-	//}
+	private boolean comprobarSexo(char sexo){
+		return this.sexo == sexo;
+	}
 	
 	public String toString(){
 		String n = "Nombre: " + nombre;
