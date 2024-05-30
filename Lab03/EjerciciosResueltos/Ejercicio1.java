@@ -12,6 +12,7 @@ public class Ejercicio1 {
 			int mitad = (inicio+fin)/2;
 			int x = sumaArrayDyV(inicio, mitad, array);
 			int y = sumaArrayDyV(mitad+1, fin, array);
+			System.out.println(x * y); // Para ver como funciona
 			return x + y;
 		}
 	}
