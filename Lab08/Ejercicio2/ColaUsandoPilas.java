@@ -7,4 +7,9 @@ public class ColaUsandoPilas {
 		pila2 = new Pila();
 	}
 
+	public void encolar(char elemento) {
+		pila1.push(elemento);
+		System.out.println("Encolado: " + elemento);
+	}
+
 }
