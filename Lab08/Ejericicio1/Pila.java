@@ -4,34 +4,34 @@ class Pila {
 	private Nodo top; 
 
 	private static class Nodo { 
-		String data; 
+		char data; 
 		Nodo next; 
 
-		Nodo(String data) { 
+		Nodo(char data) { 
 			this.data = data; 
 			this.next = null; 
 		} 
 	} 
 
 	// Método para empujar (push) un elemento en la pila 
-	public void push(String data) { 
+	public void push(char data) { 
 		Nodo nuevoNodo = new Nodo(data); 
 		nuevoNodo.next = top; 
 		top = nuevoNodo; 
 	} 
 
 	// Método para sacar (pop) un elemento de la pila 
-	public String pop() { 
+	public char pop() { 
 		if (top == null) { 
 			throw new EmptyStackException(); 
 		} 
-		String data = top.data; 
+		char data = top.data; 
 		top = top.next; 
 		return data; 
 	} 
 
 	// Método para ver el elemento en la cima de la pila 
-	public String peek() { 
+	public char peek() { 
 		if (top == null) { 
 			throw new EmptyStackException(); 
 		} 
@@ -51,5 +51,22 @@ class Pila {
 			actual = actual.next; 
 		} 
 		System.out.println("null");
-	} 
+	}
+	public Pila palabraComoPila(String str){
+		Pila p = new Pila();
+		for(int i = 0; i < str.length(); i++){
+			p.push(str.charAt(i));
+		}
+		return p;
+	}
+	
+	public String toString() { 
+		Nodo actual = top;
+		String str = "";
+		while (actual != null) { 
+			str += actual.data; 
+			actual = actual.next; 
+		}
+		return str;
+	}
 }
