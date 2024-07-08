@@ -15,6 +15,7 @@ public class Main {
 
 		System.out.println("\nRecorrido en postorden:");
 		tree.postOrder();
+		System.out.println("\nAltura: " + tree.treeHeight(tree.root));
 	}
 }
 

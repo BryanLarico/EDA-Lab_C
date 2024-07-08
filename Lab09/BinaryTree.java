@@ -40,4 +40,11 @@ public class BinaryTree {
 	public void postOrder() {
 		postOrder(root);
 	}
+	
+	public int treeHeight(Node node) {
+		if (node == null)
+			return 0;
+		else
+			return Math.max(treeHeight(node.left), treeHeight(node.right)) + 1;
+	}
 }
