@@ -14,7 +14,9 @@ public class Main {
 		bst.root.left.left = new Node(1);
 		bst.root.left.right = new Node(3);
 		System.out.println("Primer arbol es BTS: " + tree.isBST());
+		System.out.println("Numero de nodos del primer arbol: " + tree.countNodes());
 		System.out.println("Segundo arbol es BTS: " + bst.isBST());
+		System.out.println("Numero de nodos del segundo arbol: " + bst.countNodes());
 	}
 }
 

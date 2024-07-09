@@ -61,4 +61,14 @@ public class BinaryTree {
 		return (isBSTUtil(node.left, min, node.key - 1) && 
 						isBSTUtil(node.right, node.key + 1, max));
 	}
+	public int countNodes() {
+    return countNodes(root);
+   }
+
+	int countNodes(Node node) {
+		if (node == null)
+			return 0;
+
+		return 1 + countNodes(node.left) + countNodes(node.right);
+	}
 }
