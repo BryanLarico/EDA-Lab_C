@@ -150,4 +150,62 @@ public class ArbolB {
 			}
 		}
 	}
+	
+  public List<Integer> recorridoEnOrden() {
+		List<Integer> resultado = new ArrayList<>();
+		recorridoEnOrdenRecursivo(raiz, resultado);
+		return resultado;
+	}
+
+	private void recorridoEnOrdenRecursivo(NodoB nodo, List<Integer> resultado) {
+		if (nodo != null) {
+			for (int i = 0; i < nodo.llaves.size(); i++) {
+				if (!nodo.hoja) {
+					recorridoEnOrdenRecursivo(nodo.hijos.get(i), resultado);
+				}
+				resultado.add(nodo.llaves.get(i));
+			}
+			if (!nodo.hoja) {
+				recorridoEnOrdenRecursivo(nodo.hijos.get(nodo.llaves.size()), resultado);
+			}
+		}
+	}
+
+	public List<Integer> recorridoPreOrden() {
+		List<Integer> resultado = new ArrayList<>();
+		recorridoPreOrdenRecursivo(raiz, resultado);
+		return resultado;
+	}
+
+	private void recorridoPreOrdenRecursivo(NodoB nodo, List<Integer> resultado) {
+		if (nodo != null) {
+			for (int i = 0; i < nodo.llaves.size(); i++) {
+				resultado.add(nodo.llaves.get(i));
+			}
+			for (int i = 0; i <= nodo.llaves.size(); i++) {
+				if (!nodo.hoja) {
+					recorridoPreOrdenRecursivo(nodo.hijos.get(i), resultado);
+				}
+			}
+		}
+	}
+
+	public List<Integer> recorridoPostOrden() {
+		List<Integer> resultado = new ArrayList<>();
+		recorridoPostOrdenRecursivo(raiz, resultado);
+		return resultado;
+	}
+
+	private void recorridoPostOrdenRecursivo(NodoB nodo, List<Integer> resultado) {
+		if (nodo != null) {
+			for (int i = 0; i <= nodo.llaves.size(); i++) {
+				if (!nodo.hoja) {
+						recorridoPostOrdenRecursivo(nodo.hijos.get(i), resultado);
+				}
+			}
+			for (int i = 0; i < nodo.llaves.size(); i++) {
+				resultado.add(nodo.llaves.get(i));
+			}
+		}
+	}
 }

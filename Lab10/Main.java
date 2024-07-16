@@ -1,26 +1,20 @@
 public class Main{	
-	public static void main(String[] args) { 
-		ArbolB arbol1 = new ArbolB(3); 
-		arbol1.insertar(10); 
-		arbol1.insertar(20); 
-		arbol1.insertar(5); 
-		arbol1.insertar(6); 
+	public static void main(String[] args) {
+			ArbolB arbol = new ArbolB(3);
+			arbol.insertar(10);
+			arbol.insertar(20);
+			arbol.insertar(5);
+			arbol.insertar(6);
+			arbol.insertar(12);
+			arbol.insertar(30);
+			arbol.insertar(7);
+			arbol.insertar(17);
 
-		ArbolB arbol2 = new ArbolB(3); 
-		arbol2.insertar(12); 
-		arbol2.insertar(30); 
-		arbol2.insertar(7); 
-		arbol2.insertar(17); 
+			System.out.println("El árbol B es:");
+			arbol.imprimir();
 
-		System.out.println("El árbol B1 es:"); 
-		arbol1.imprimir(); 
-
-		System.out.println("El árbol B2 es:"); 
-		arbol2.imprimir(); 
-
-		arbol1.fusionar(arbol2);
-
-		System.out.println("El árbol B fusionado es:"); 
-		arbol1.imprimir(); 
-	} 
+			System.out.println("Recorrido en orden: " + arbol.recorridoEnOrden());
+			System.out.println("Recorrido en preorden: " + arbol.recorridoPreOrden());
+			System.out.println("Recorrido en postorden: " + arbol.recorridoPostOrden());
+  } 
 }
