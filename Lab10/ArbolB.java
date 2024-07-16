@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ArbolB { 
     NodoB raiz; 
     int t; // Grado mínimo 
@@ -100,24 +102,20 @@ public class ArbolB {
 	}
 
   private boolean esArbolBValidoRecursivo(NodoB nodo, Integer min, Integer max) {
-		// Verificar el número de llaves en el nodo
 		if (nodo.llaves.size() < t - 1 || nodo.llaves.size() > 2 * t - 1) {
 			return false;
 		}
-		// Verificar que las llaves estén ordenadas
 		for (int i = 0; i < nodo.llaves.size() - 1; i++) {
 			if (nodo.llaves.get(i) >= nodo.llaves.get(i + 1)) {
 				return false;
 			}
 		}
-		// Verificar que las llaves estén dentro de los límites (si se proporcionan)
 		if (min != null && nodo.llaves.get(0) <= min) {
 			return false;
 		}
 		if (max != null && nodo.llaves.get(nodo.llaves.size() - 1) >= max) {
 			return false;
 		}
-		// Si el nodo no es hoja, verificar los hijos recursivamente
 		if (!nodo.hoja) {
 			for (int i = 0; i <= nodo.llaves.size(); i++) {
 				Integer newMax = (i == nodo.llaves.size()) ? max : nodo.llaves.get(i);
@@ -128,5 +126,28 @@ public class ArbolB {
 			}
 		}
 		return true;
+	}
+	public void fusionar(ArbolB otro) {
+		if (this.raiz == null) {
+			this.raiz = otro.raiz;
+		} else if (otro.raiz != null) {
+			ArrayList<Integer> todasLlaves = new ArrayList<>();
+			obtenerLlaves(this.raiz, todasLlaves);
+			obtenerLlaves(otro.raiz, todasLlaves);
+			Collections.sort(todasLlaves);
+			this.raiz = null;
+			for (int llave : todasLlaves) {
+				this.insertar(llave);
+			}
+		}
+	}
+
+	private void obtenerLlaves(NodoB nodo, ArrayList<Integer> llaves) {
+		if (nodo != null) {
+			llaves.addAll(nodo.llaves);
+			for (NodoB hijo : nodo.hijos) {
+				obtenerLlaves(hijo, llaves);
+			}
+		}
 	}
 }
