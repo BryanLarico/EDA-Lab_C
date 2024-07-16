@@ -12,6 +12,7 @@ public class Main{
 		arbol.insertar(17); 
 
 		System.out.println("El árbol B es: "); 
-		arbol.imprimir(); 
+		arbol.imprimir();
+		System.out.println("El árbol B es válido: " + arbol.esArbolBValido());
 	} 
 }	

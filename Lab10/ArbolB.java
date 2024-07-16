@@ -92,4 +92,41 @@ public class ArbolB {
             } 
         }
 		}
+	public boolean esArbolBValido() {
+		if (raiz == null) {
+			return true;
+		}
+		return esArbolBValidoRecursivo(raiz, null, null);
+	}
+
+  private boolean esArbolBValidoRecursivo(NodoB nodo, Integer min, Integer max) {
+		// Verificar el número de llaves en el nodo
+		if (nodo.llaves.size() < t - 1 || nodo.llaves.size() > 2 * t - 1) {
+			return false;
+		}
+		// Verificar que las llaves estén ordenadas
+		for (int i = 0; i < nodo.llaves.size() - 1; i++) {
+			if (nodo.llaves.get(i) >= nodo.llaves.get(i + 1)) {
+				return false;
+			}
+		}
+		// Verificar que las llaves estén dentro de los límites (si se proporcionan)
+		if (min != null && nodo.llaves.get(0) <= min) {
+			return false;
+		}
+		if (max != null && nodo.llaves.get(nodo.llaves.size() - 1) >= max) {
+			return false;
+		}
+		// Si el nodo no es hoja, verificar los hijos recursivamente
+		if (!nodo.hoja) {
+			for (int i = 0; i <= nodo.llaves.size(); i++) {
+				Integer newMax = (i == nodo.llaves.size()) ? max : nodo.llaves.get(i);
+				Integer newMin = (i == 0) ? min : nodo.llaves.get(i - 1);
+				if (!esArbolBValidoRecursivo(nodo.hijos.get(i), newMin, newMax)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
